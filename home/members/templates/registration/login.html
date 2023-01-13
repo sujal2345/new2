@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block body %}
+{% if user.is_authenticated %}
+<h1>You are already logged in</h1>
+{% else %}
+<div class="card text-center d-block p-2">
+  <h1>Login</h1><br/><br/>
+  <div class="form-group">
+    <form method="post">
+      {% csrf_token %}
+      {{form.as_p}}
+      <button class="btn btn-primary">Login</button>
+    </div>
+ </div>
+    {% endif %}
+{% endblock body %}

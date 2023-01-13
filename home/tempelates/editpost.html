@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+{% if user.id == post.usernames.id %}
+<h1>Edit Post</h1>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>Edit</button>
+{% else %}
+you are not allowed here
+{% endif %}
+{% endblock body %}

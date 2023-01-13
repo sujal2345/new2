@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block body %}
+{% if user.id == post.usernames.id %}
+<h1>Delete {{post.title}}</h1>
+<form method="post">
+    {% csrf_token %}
+    <strong>Are you sure</strong>
+  <button>Delete post?</button>
+{% else %}
+you are not allowed to delete this post
+{% endif %}
+{% endblock body %}

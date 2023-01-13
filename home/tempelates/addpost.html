@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block body %}
+{% if user.is_authenticated %}
+<div class="form-class">
+  <h1>Add Post</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button >Post</button>
+    {% else %}
+    You are not authenticated
+    {% endif %}
+    <script>
+      var name = '{{user.id}}';
+      document.getElementById('elder').value=name;
+    </script>
+{% endblock body %}

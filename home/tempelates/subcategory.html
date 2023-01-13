@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+<div class="container">
+    {% if subty_view %}
+    {% for posted in subty_view%}
+    <h3>Best {{posted.subtype}} in your town</h1>
+        <div class="col-sm-6" style="width: 100%">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{posted.usernames}}</h5>
+                    <h5 class="card-title">{{posted.address}}</h5>
+                    {% if posted.main_image %}
+                        <img class="d-block w-100" src="{{posted.main_image.url}}">
+                    {% endif %}
+                    <p class="card-text">{{posted.address}}</p>
+                    <a href="{%url 'article' posted.pk %}" class="btn btn-primary">See posted by {{posted.username}}</a>
+                    {% if user.is_authenticated %}
+                    <a href="{%url 'edit' posted.pk %}" class="btn btn-primary">Edit</a>
+                    <a href="{%url 'delete' posted.pk %}" class="btn btn-primary">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+            <br/>
+            <br/>
+        </div>   
+    {% endfor %}
+{% else %}
+<h1>Sorry this page doesn't exist!!!!!!!!@@@@@!!</h1>
+{% endif %}
+{% endblock body %}
